@@ -8,5 +8,7 @@ app.controller("dashboardCtrl", function ($scope, $rootScope, toaster, $routePar
                     $location.path('/login');
                 }
             });
+
+
     }
 });

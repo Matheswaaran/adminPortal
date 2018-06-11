@@ -18,6 +18,21 @@ app.config(['$locationProvider', '$routeProvider', function ($locationProvider, 
         templateUrl: 'partials/dashboard.html',
         controller: 'dashboardCtrl'
     })
+	.when('/addUser', {
+		title: 'Add user',
+		templateUrl: 'partials/adduser.html',
+		controller: 'addUserCtrl'
+	})
+	// .when('/addContractor', {
+	// 	title: 'Add Contractor',
+	// 	templateUrl: 'partials/addContractor.html',
+	// 	controller: 'addContractCtrl'
+	// })
+	// .when('/addPkgContractor', {
+	// 	title: 'Add Package Contractor',
+	// 	templateUrl: 'partials/addpkgcontractor.html',
+	// 	controller: 'addPkgContractCtrl'
+	// })
 	.when('/', {
     	title: 'Login',
     	templateUrl: 'partials/login.html',
@@ -32,6 +47,15 @@ app.config(['$locationProvider', '$routeProvider', function ($locationProvider, 
 app.run(function ($rootScope, $location, IHRM_adminAppService) {
     $rootScope.$on("$routeChangeStart", function (event, next, current) {
 
+    	if ($location.path() == '/' || $location.path() == '/login'){
+    		$rootScope.navBar = true;
+    		$rootScope.sideMenu = true;
+    		$rootScope.loginPage = false;
+		}else{
+            $rootScope.navBar = false;
+            $rootScope.sideMenu = false;
+            $rootScope.loginPage = true;
+		}
     });
 });
 
