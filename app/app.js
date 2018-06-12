@@ -44,10 +44,10 @@ app.config(['$locationProvider', '$routeProvider', function ($locationProvider, 
     });
 }]);
 
-app.run(function ($rootScope, $location, IHRM_adminAppService) {
+app.run(function ($rootScope, $location, $http, IHRM_adminAppService) {
     $rootScope.$on("$routeChangeStart", function (event, next, current) {
 
-    	if ($location.path() == '/' || $location.path() == '/login'){
+        if ($location.path() == '/' || $location.path() == '/login'){
     		$rootScope.navBar = true;
     		$rootScope.sideMenu = true;
     		$rootScope.loginPage = false;
@@ -56,6 +56,9 @@ app.run(function ($rootScope, $location, IHRM_adminAppService) {
             $rootScope.sideMenu = false;
             $rootScope.loginPage = true;
 		}
+
+		$rootScope.admin_id;
+        $rootScope.admin_username;
     });
 });
 

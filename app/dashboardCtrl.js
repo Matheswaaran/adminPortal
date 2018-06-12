@@ -1,14 +1,13 @@
 app.controller("dashboardCtrl", function ($scope, $rootScope, toaster, $routeParams, $location, $http) {
 
-    $scope.doLogout = function () {
-        $http.get("api/logout.php")
+    $scope.init = function(){
+        $http.get("api/checkSession.php")
             .then(function (response) {
-                toaster.pop(response.data.status,"",response.data.message,3000,'trustedHtml');
-                if (response.data.status == "success"){
+                if (response.data.status == "error"){
+                    toaster.pop(response.data.status,"",response.data.message,3000,'trustedHtml');
                     $location.path('/login');
                 }
             });
+    };
 
-
-    }
 });

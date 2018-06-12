@@ -6,9 +6,11 @@ app.controller("authCtrl",function ($scope, $rootScope, toaster, $routeParams, $
         $http.get("api/checkSession.php")
             .then(function (response) {
                 console.log(response);
+                toaster.pop(response.data.status,"",response.data.message,3000,'trustedHtml');
                 if (response.data.status == "success"){
-                    toaster.pop(response.data.status,"",response.data.message,3000,'trustedHtml');
                     $location.path('/dashboard');
+                }else if (response.data.status == "error") {
+                    $location.path('/login');
                 }
             });
     };
@@ -20,15 +22,21 @@ app.controller("authCtrl",function ($scope, $rootScope, toaster, $routeParams, $
         };
         console.log($scope.login);
         $http.post('api/login.php',$scope.login)
-        .then(function (response) {
-            toaster.pop(response.data.status,"",response.data.message,3000,'trustedHtml');
-            if (response.data.status == "success"){
-                $location.path('/dashboard');
-            }
-        })
+            .then(function (response) {
+                toaster.pop(response.data.status,"",response.data.message,3000,'trustedHtml');
+                if (response.data.status == "success"){
+                    $location.path('/dashboard');
+                }
+            });
     };
 
-    $scope.logout = function () {
-        
-    };
+    $scope.doLogout = function () {
+        $http.get("api/logout.php")
+            .then(function (response) {
+                toaster.pop(response.data.status,"",response.data.message,3000,'trustedHtml');
+                if (response.data.status == "success"){
+                    $location.path('/login');
+                }
+            });
+    }
 });

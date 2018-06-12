@@ -1,0 +1,40 @@
+<?php
+    include 'includes/SessionUtils.php';
+    $session = new SessionUtils();
+    $postdata = file_get_contents("php://input");
+    $request = json_decode($postdata);
+
+    $first_name = $request->first_name;
+    $last_name = $request->last_name;
+    $username = $request->username;
+    $email = $request->email;
+    $password = $request->password;
+    $address_1 = $request->address_1;
+    $address_2 = $request->address_2;
+    $dist = $request->district;
+    $state = $request->state;
+    $pincode = $request->pincode;
+    $contact_no = $request->contact_no;
+    $admin_di = $request->admin_id;
+    $password = $session->encryptIt($password);
+    $response = array();
+
+    $db = mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_BASE);
+
+    if (!$db){
+        $response['status'] = "error";
+        $response['message'] = "Error in Connection";
+    }else{
+        $insert_sql = "INSERT INTO users(first_name, last_name, username, email_id, address_1, address_2, district, state, pincode, contact_no, password, admin_id) VALUES ('$first_name', '$last_name', '$username', '$email', '$address_1', '$address_2', '$district', '$state', '$pincode', '$contact_no', '$password', '$admin_id')";
+
+        if (mysqli_query($db,$insert_sql)){
+            $response['status'] = "success";
+            $response['message'] = "User added successfully";
+        }else{
+            $response['status'] = "error";
+            $response['message'] = "Error in Query Execution";
+        }
+    }
+
+    echo json_encode($response);
+?>
