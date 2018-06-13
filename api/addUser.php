@@ -12,10 +12,10 @@
     $address_1 = $request->address_1;
     $address_2 = $request->address_2;
     $dist = $request->district;
-    $state = $request->state;
+    $state = $request->state_name;
     $pincode = $request->pincode;
     $contact_no = $request->contact_no;
-    $admin_di = $request->admin_id;
+    $admin_id = $request->admin_id;
     $password = $session->encryptIt($password);
     $response = array();
 
@@ -25,7 +25,7 @@
         $response['status'] = "error";
         $response['message'] = "Error in Connection";
     }else{
-        $insert_sql = "INSERT INTO users(first_name, last_name, username, email_id, address_1, address_2, district, state, pincode, contact_no, password, admin_id) VALUES ('$first_name', '$last_name', '$username', '$email', '$address_1', '$address_2', '$district', '$state', '$pincode', '$contact_no', '$password', '$admin_id')";
+        $insert_sql = "INSERT INTO users(first_name, last_name, username, email_id, address_1, address_2, district, state, pincode, contact_no, password, admin_id) VALUES ('$first_name', '$last_name', '$username', '$email', '$address_1', '$address_2', '$dist', '$state', '$pincode', '$contact_no', '$password', '$admin_id')";
 
         if (mysqli_query($db,$insert_sql)){
             $response['status'] = "success";

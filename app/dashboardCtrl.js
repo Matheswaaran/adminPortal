@@ -3,6 +3,7 @@ app.controller("dashboardCtrl", function ($scope, $rootScope, toaster, $routePar
     $scope.init = function(){
         $http.get("api/checkSession.php")
             .then(function (response) {
+
                 if (response.data.status == "error"){
                     toaster.pop(response.data.status,"",response.data.message,3000,'trustedHtml');
                     $location.path('/login');

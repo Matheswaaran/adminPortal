@@ -5,7 +5,6 @@ app.controller("authCtrl",function ($scope, $rootScope, toaster, $routeParams, $
     $scope.init = function(){
         $http.get("api/checkSession.php")
             .then(function (response) {
-                console.log(response);
                 toaster.pop(response.data.status,"",response.data.message,3000,'trustedHtml');
                 if (response.data.status == "success"){
                     $location.path('/dashboard');
@@ -35,6 +34,7 @@ app.controller("authCtrl",function ($scope, $rootScope, toaster, $routeParams, $
             .then(function (response) {
                 toaster.pop(response.data.status,"",response.data.message,3000,'trustedHtml');
                 if (response.data.status == "success"){
+                    localStorage.clear();
                     $location.path('/login');
                 }
             });
