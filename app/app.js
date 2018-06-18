@@ -23,16 +23,36 @@ app.config(['$locationProvider', '$routeProvider', function ($locationProvider, 
 		templateUrl: 'partials/adduser.html',
 		controller: 'addUserCtrl'
 	})
-	// .when('/addContractor', {
-	// 	title: 'Add Contractor',
-	// 	templateUrl: 'partials/addContractor.html',
-	// 	controller: 'addContractCtrl'
-	// })
-	// .when('/addPkgContractor', {
-	// 	title: 'Add Package Contractor',
-	// 	templateUrl: 'partials/addpkgcontractor.html',
-	// 	controller: 'addPkgContractCtrl'
-	// })
+    .when('/addSite', {
+        title: 'Add Site',
+        templateUrl: 'partials/addsite.html',
+        controller: 'addSiteCtrl'
+    })
+    .when('/viewUsers', {
+        title: 'View Users',
+        templateUrl: 'partials/viewusers.html',
+        controller: 'viewUserCtrl'
+    })
+    .when('/viewContractors', {
+        title: 'View Contractors',
+        templateUrl: 'partials/viewcontract.html',
+        controller: 'viewContractCtrl'
+    })
+    .when('/viewPkgContractors', {
+        title: 'View Package Contractors',
+        templateUrl: 'partials/viewppkgcontract.html',
+        controller: 'viewPkgContractCtrl'
+    })
+    .when('/viewEmployee', {
+        title: 'View Employees',
+        templateUrl: 'partials/viewemployees.html',
+        controller: 'viewEmployeeCtrl'
+    })
+    .when('/viewSites', {
+        title: 'View Sites',
+        templateUrl: 'partials/viewsites.html',
+        controller: 'viewSiteCtrl'
+    })
 	.when('/', {
     	title: 'Login',
     	templateUrl: 'partials/login.html',
@@ -50,10 +70,12 @@ app.run(function ($rootScope, $location, $http, IHRM_adminAppService) {
         if ($location.path() == '/' || $location.path() == '/login'){
     		$rootScope.navBar = true;
     		$rootScope.sideMenu = true;
-    		$rootScope.loginPage = false;
+            $rootScope.footerDiv = true;
+            $rootScope.loginPage = false;
 		}else{
             $rootScope.navBar = false;
             $rootScope.sideMenu = false;
+            $rootScope.footerDiv - false;
             $rootScope.loginPage = true;
 		}
 
