@@ -1,5 +1,7 @@
 app.controller("viewUserCtrl", function ($scope, $route, $rootScope, toaster, $routeParams, $location, $http) {
 
+    $scope.users = {};
+
     $scope.init = function(){
         $http.get("api/checkSession.php")
             .then(function (response) {
@@ -15,5 +17,8 @@ app.controller("viewUserCtrl", function ($scope, $route, $rootScope, toaster, $r
             });
     };
 
-
+    $http.get('api/getUsers.php')
+        .then(function (response) {
+            $scope.users = response.data.records;
+        });
 });
