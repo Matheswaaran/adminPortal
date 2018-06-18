@@ -43,7 +43,7 @@ app.config(['$locationProvider', '$routeProvider', function ($locationProvider, 
         templateUrl: 'partials/viewppkgcontract.html',
         controller: 'viewPkgContractCtrl'
     })
-    .when('/viewEmployee', {
+    .when('/viewEmployees', {
         title: 'View Employees',
         templateUrl: 'partials/viewemployees.html',
         controller: 'viewEmployeeCtrl'
