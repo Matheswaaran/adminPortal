@@ -15,8 +15,6 @@ app.controller("addUserCtrl", function ($scope, $route, $rootScope, toaster, $ro
                     $location.path('/login');
                 }
             });
-        console.log($rootScope.admin_id + $rootScope.admin_username);
-        console.log(localStorage.getItem("admin_id") + localStorage.getItem("admin_username"));
     };
 
 
@@ -46,6 +44,4 @@ app.controller("addUserCtrl", function ($scope, $route, $rootScope, toaster, $ro
                 }
             })
     }
-
-
 });
