@@ -40,7 +40,7 @@ app.config(['$locationProvider', '$routeProvider', function ($locationProvider, 
     })
     .when('/viewPkgContractors', {
         title: 'View Package Contractors',
-        templateUrl: 'partials/viewppkgcontract.html',
+        templateUrl: 'partials/viewpkgcontract.html',
         controller: 'viewPkgContractCtrl'
     })
     .when('/viewEmployees', {

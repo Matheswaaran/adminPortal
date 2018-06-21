@@ -15,5 +15,11 @@ app.controller("viewPkgContractCtrl", function ($scope, $route, $rootScope, toas
             });
     };
 
+    $http.get('api/getPkgContractors.php')
+        .then(function (response) {
+            console.log(response);
+            $scope.sites = response.data.records;
+        });
+
 
 });
