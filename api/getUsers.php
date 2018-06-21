@@ -10,7 +10,7 @@
         $response["status"] = "error";
         $response["message"] = "Error in Connection";
     }else{
-        $select_qry = "SELECT * FROM users";
+        $select_qry = "SELECT * FROM users_table";
         if ($res = mysqli_query($db, $select_qry)){
             $result = array();
             while ($row = mysqli_fetch_array($res)){

@@ -47,13 +47,13 @@ INSERT INTO `admin_users` (`admin_id`, `first_name`, `last_name`, `username`, `e
 -- Table structure for table `users`
 --
 
-CREATE TABLE `users` (
+CREATE TABLE `users_table` (
   `user_id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `first_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
   `username` varchar(50) NOT NULL,
   `email_id` varchar(100) NOT NULL,
-  `aadhar_uid` int(20) NOT NULL,
+  `aadhar_uid` int(20) NOT NULL DEFAULT '0',
   `aadhar_string` varchar(3000) NOT NULL DEFAULT '0',
   `address_1` varchar (100) NOT NULL,
   `address_2` varchar (100) NOT NULL,
