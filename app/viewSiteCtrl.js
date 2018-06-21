@@ -15,5 +15,8 @@ app.controller("viewSiteCtrl", function ($scope, $route, $rootScope, toaster, $r
             });
     };
 
-
+    $http.get('api/getSites.php')
+        .then(function (response) {
+            $scope.sites = response.data.records;
+        });
 });

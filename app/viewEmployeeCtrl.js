@@ -16,4 +16,10 @@ app.controller("viewEmployeeCtrl", function ($scope, $route, $rootScope, toaster
     };
 
 
+    $http.get('api/getSites.php')
+        .then(function (response) {
+            $scope.employees = response.data.records;
+        });
+
+
 });

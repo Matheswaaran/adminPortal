@@ -53,6 +53,8 @@ CREATE TABLE `users` (
   `last_name` varchar(50) NOT NULL,
   `username` varchar(50) NOT NULL,
   `email_id` varchar(100) NOT NULL,
+  `aadhar_uid` int(20) NOT NULL,
+  `aadhar_string` varchar(3000) NOT NULL DEFAULT '0',
   `address_1` varchar (100) NOT NULL,
   `address_2` varchar (100) NOT NULL,
   `district` varchar (100) NOT NULL,
@@ -61,5 +63,80 @@ CREATE TABLE `users` (
   `contact_no` varchar(15) NOT NULL,
   `password` varchar(1000) NOT NULL,
   `admin_id` int(11) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `employee_table`
+--
+
+CREATE TABLE `employee_table` (
+  `emp_id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `auth` int(2) NOT NULL DEFAULT '0',
+  `aadhar_uid` int(20) NOT NULL,
+  `aadhar_string` varchar(3000) NOT NULL DEFAULT '0',
+  `address_1` varchar (100) NOT NULL,
+  `address_2` varchar (100) NOT NULL,
+  `district` varchar (100) NOT NULL,
+  `state` varchar (100) NOT NULL,
+  `pincode` varchar (10) NOT NULL,
+  `contact_no` varchar(15) NOT NULL,
+  `skill` int(3) NOT NULL,
+  `emp_type` int(3) NOT NULL,
+  `contract_id` int(11) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contract_users`
+--
+
+CREATE TABLE `contract_users` (
+  `contract_id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `email_id` varchar(100) NOT NULL,
+  `aadhar_uid` int(20) NOT NULL,
+  `aadhar_string` varchar(3000) NOT NULL DEFAULT '0',
+  `address_1` varchar (100) NOT NULL,
+  `address_2` varchar (100) NOT NULL,
+  `district` varchar (100) NOT NULL,
+  `state` varchar (100) NOT NULL,
+  `pincode` varchar (10) NOT NULL,
+  `contact_no` varchar(15) NOT NULL,
+  `password` varchar(1000) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pkg_contract_users`
+--
+
+CREATE TABLE `pkg_contract_users` (
+  `pkg_contract_id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `email_id` varchar(100) NOT NULL,
+  `aadhar_uid` int(20) NOT NULL,
+  `aadhar_string` varchar(3000) NOT NULL DEFAULT '0',
+  `address_1` varchar (100) NOT NULL,
+  `address_2` varchar (100) NOT NULL,
+  `district` varchar (100) NOT NULL,
+  `state` varchar (100) NOT NULL,
+  `pincode` varchar (10) NOT NULL,
+  `contact_no` varchar(15) NOT NULL,
+  `password` varchar(1000) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

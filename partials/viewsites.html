@@ -7,19 +7,15 @@
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Username</th>
-                    <th>Email-ID</th>
-                    <th>Contact No</th>
                     <th>Address</th>
+                    <th>Type</th>
                 </tr>
             </thead>
             <tbody>
-            <tr class="odd gradeX" ng-repeat="x in users">
+            <tr class="odd gradeX" ng-repeat="x in sites">
                 <td>{{ x.name }}</td>
-                <td>{{ x.username }}</td>
-                <td>{{ x.email_id }}</td>
-                <td>{{ x.contact_no }}</td>
                 <td>{{ x.address }}</td>
+                <td>{{ x.type }}</td>
             </tr>
             </tbody>
         </table>
