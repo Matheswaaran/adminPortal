@@ -1,4 +1,4 @@
-var app = angular.module('IHRM_adminApp',['ngRoute','ngAnimate','toaster']);
+var app = angular.module('IHRM_adminApp',['datatables','ngRoute','ngAnimate','toaster']);
 
 app.config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
     $locationProvider.hashPrefix('!');
