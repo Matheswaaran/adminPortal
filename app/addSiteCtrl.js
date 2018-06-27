@@ -1,5 +1,5 @@
 app.controller("addSiteCtrl", function ($scope, $route, $rootScope, toaster, $routeParams, $location, $http) {
-    
+
     $scope.site = {};
 
     $scope.init = function(){
@@ -16,19 +16,10 @@ app.controller("addSiteCtrl", function ($scope, $route, $rootScope, toaster, $ro
                 }
             });
     };
-    
+
     $scope.addSite = function (site) {
 
-        $scope.site = {
-            name: $scope.site.name,
-            address_1: $scope.site.address_1,
-            address_2: $scope.site.address_2,
-            district: $scope.site.district,
-            state: $scope.site.state,
-            pincode: $scope.site.pincode,
-            type: $scope.site.type,
-            admin_id: localStorage.getItem("admin_id")
-        };
+        $scope.site.admin_id = localStorage.getItem("admin_id");
 
         $http.post("api/addSite.php", $scope.site)
             .then(function (response) {

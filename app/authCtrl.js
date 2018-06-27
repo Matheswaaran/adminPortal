@@ -15,10 +15,6 @@ app.controller("authCtrl",function ($scope, $rootScope, toaster, $routeParams, $
     };
 
     $scope.doLogin = function () {
-        $scope.login = {
-            username: $scope.login.username,
-            password: $scope.login.password
-        };
         console.log($scope.login);
         $http.post('api/login.php',$scope.login)
             .then(function (response) {

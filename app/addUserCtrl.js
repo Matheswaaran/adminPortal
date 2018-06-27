@@ -20,28 +20,14 @@ app.controller("addUserCtrl", function ($scope, $route, $rootScope, toaster, $ro
 
     $scope.addUser = function (user) {
 
-        $scope.user = {
-            first_name : $scope.user.first_name,
-            last_name : $scope.user.last_name,
-            username : $scope.user.username,
-            email : $scope.user.email,
-            password : $scope.user.password,
-            address_1 : $scope.user.address_1,
-            address_2 : $scope.user.address_2,
-            district : $scope.user.district,
-            state_name : $scope.user.state_name,
-            pincode: $scope.user.pincode,
-            contact_no : $scope.user.contact_no,
-            admin_id : localStorage.getItem("admin_id")
-        };
-        // console.log($scope.user);
+        $scope.user.admin_id = localStorage.getItem("admin_id");
+
         $http.post('api/addUser.php',$scope.user)
             .then(function (response) {
-                // console.log(response);
                 toaster.pop(response.data.status,"",response.data.message,3000,'trustedHtml');
                 if (response.data.status == "success"){
                     $route.reload();
                 }
-            })
+            });
     }
 });
