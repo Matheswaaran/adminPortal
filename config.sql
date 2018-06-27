@@ -63,6 +63,7 @@ CREATE TABLE `users_table` (
   `contact_no` varchar(15) NOT NULL,
   `password` varchar(1000) NOT NULL,
   `admin_id` int(11) NOT NULL,
+  `blocked` int(11) NOT NULL DEFAULT '0',
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -88,6 +89,7 @@ CREATE TABLE `employee_table` (
   `skill` int(3) NOT NULL,
   `emp_type` int(3) NOT NULL,
   `contract_id` int(11) NOT NULL,
+  `blocked` int(11) NOT NULL DEFAULT '0',
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -113,6 +115,7 @@ CREATE TABLE `contract_users` (
   `contact_no` varchar(15) NOT NULL,
   `password` varchar(1000) NOT NULL,
   `user_id` int(11) NOT NULL,
+  `blocked` int(11) NOT NULL DEFAULT '0',
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -138,5 +141,6 @@ CREATE TABLE `pkg_contract_users` (
   `contact_no` varchar(15) NOT NULL,
   `password` varchar(1000) NOT NULL,
   `user_id` int(11) NOT NULL,
+  `blocked` int(11) NOT NULL DEFAULT '0',
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

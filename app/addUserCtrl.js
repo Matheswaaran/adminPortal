@@ -17,6 +17,40 @@ app.controller("addUserCtrl", function ($scope, $route, $rootScope, toaster, $ro
             });
     };
 
+    $scope.chkUsername = function (username){
+      if (username) {
+        $scope.data = {
+          data: username,
+          type: "username"
+        }
+        $http.post('api/chkAvailability.php',$scope.data)
+            .then(function (response) {
+              // console.log(response);
+              if (response.data.status == "available") {
+                document.getElementById('useravail').style.display = "none";
+              }else if (response.data.status == "not available") {
+                document.getElementById('useravail').style.display = "block";
+              }
+            });
+      }
+    }
+
+    $scope.chkEmail = function (email){
+      if (email) {
+        $scope.data = {
+          data: email,
+          type: "username"
+        }
+        $http.post('api/chkAvailability.php',$scope.data)
+            .then(function (response) {
+              if (response.data.status === "available") {
+                document.getElementById('emailavail').style.display = "none";
+              }else if (response.data.status === "not available") {
+                document.getElementById('emailavail').style.display = "block";
+              }
+            });
+      }
+    }
 
     $scope.addUser = function (user) {
 
