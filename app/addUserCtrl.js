@@ -39,7 +39,7 @@ app.controller("addUserCtrl", function ($scope, $route, $rootScope, toaster, $ro
       if (email) {
         $scope.data = {
           data: email,
-          type: "username"
+          type: "email"
         }
         $http.post('api/chkAvailability.php',$scope.data)
             .then(function (response) {
