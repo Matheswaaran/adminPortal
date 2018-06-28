@@ -1,4 +1,4 @@
-<div class="page-content container" ng-controller="addUserCtrl" ng-init="init()">
+<div class="page-content container col-sm-12" ng-controller="addUserCtrl" ng-init="init()">
     <div class="content-box-large">
         <div class="panel-heading">
             <div class="panel-title">Add User Form</div>
@@ -25,9 +25,15 @@
                     <input class="form-control" placeholder="Email Address" type="email" ng-model="user.email" ng-keyup="chkEmail(user.email)" required>
                     <span class="help-block" id="emailavail" style="display: none; color:red">Email already exists. Try again with another one!</span>
                 </div>
-                <div class="form-group">
-                    <label>Password *</label>
-                    <input class="form-control" placeholder="Password" type="password" ng-model="user.password" required>
+                <div class="row">
+                  <div class="form-group col-sm-10">
+                      <label>Password *</label>
+                      <input class="form-control" placeholder="Password" type="{{showPassword?'text':'password'}}" ng-model="user.password" required>
+                      <input type="checkbox" ng-model="showPassword" ng-checked="showPassword" title="">Show Password
+                  </div>
+                  <div class="form-group col-sm-1">
+                    <a style="margin-top:20px" href="" class="btn btn-primary" ng-click="generatePass()">Generate</a>
+                  </div>
                 </div>
                 <div class="form-group">
                     <label>Address Line 1 *</label>
