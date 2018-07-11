@@ -75,8 +75,6 @@ app.controller("addUserCtrl", function ($scope, $route, $rootScope, toaster, $ro
         $scope.user.admin_id = localStorage.getItem("admin_id");
 
         if ($scope.usernameIsAvailable && $scope.emailIsAvailable ){
-            toaster.pop("error","LLLL","username or email-id not available",3000,'trustedHtml');
-        }  else{
             $http.post('api/addUser.php',$scope.user)
                 .then(function (response) {
                     toaster.pop(response.data.status,"",response.data.message,3000,'trustedHtml');
@@ -84,6 +82,8 @@ app.controller("addUserCtrl", function ($scope, $route, $rootScope, toaster, $ro
                         $route.reload();
                     }
                 });
+        } else {
+            toaster.pop("error","","username or email-id not available",3000,'trustedHtml');
         }
     }
 });

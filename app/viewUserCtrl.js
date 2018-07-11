@@ -27,8 +27,13 @@ app.controller("viewUserCtrl", function ($scope, $route, $rootScope, toaster, $r
 
     $scope.removeUserClick = function() {
         $scope.selected_users = $scope.users.filter(user => user.selected == true);
-        console.log($scope.selected_users);
-
+        $http.post("api/removeUsers.php", $scope.selected_users)
+            .then(function(response){
+                toaster.pop(response.data.status,"",response.data.message,3000,'trustedHtml');
+                if (response.data.status == "success"){
+                    $route.reload();
+                }
+            });
     };
 
     $scope.blockUsers = function() {

@@ -14,6 +14,7 @@
         if ($res = mysqli_query($db, $select_qry)){
             $result = array();
             while ($row = mysqli_fetch_array($res)){
+                $user["user_id"] = $row["user_id"];
                 $user["name"] = $row["first_name"] . " " . $row["last_name"];
                 $user["username"] = $row["username"];
                 $user["email_id"] = $row["email_id"];
