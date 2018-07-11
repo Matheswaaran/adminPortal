@@ -6,6 +6,7 @@
         <table datatable="ng" dt-options="vm.dtOptions" cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered">
             <thead>
                 <tr>
+                    <th>Select</th>
                     <th>Name</th>
                     <th>Username</th>
                     <th>Email-ID</th>
@@ -15,6 +16,7 @@
             </thead>
             <tbody>
             <tr class="odd gradeX" ng-repeat="x in users">
+                <td><input type="checkbox" ng-model="x.selected" ng-checked="x.selected"/></td>
                 <td>{{ x.name }}</td>
                 <td>{{ x.username }}</td>
                 <td>{{ x.email_id }}</td>
@@ -24,4 +26,7 @@
             </tbody>
         </table>
     </div>
+    <button class="btn btn-danger" ng-click="removeUserClick()">Remove</button>
+    <button class="btn btn-warning">Block</button>
+    <button class="btn btn-success">Un-Block</button>
 </div>

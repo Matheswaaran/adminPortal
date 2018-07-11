@@ -19,6 +19,20 @@ app.controller("viewUserCtrl", function ($scope, $route, $rootScope, toaster, $r
 
     $http.get('api/getUsers.php')
         .then(function (response) {
-            $scope.users = response.data.records;
+            $scope.users = response.data.records.map(user => {
+                user.selected = false;
+                return user;
+            });
         });
+
+    $scope.removeUserClick = function() {
+        $scope.selected_users = $scope.users.filter(user => user.selected == true);
+        console.log($scope.selected_users);
+
+    };
+
+    $scope.blockUsers = function() {
+
+    };
+
 });
