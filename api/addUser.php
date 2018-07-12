@@ -8,6 +8,7 @@
     $last_name = $request->last_name;
     $username = $request->username;
     $email = $request->email;
+    $aadhar = $request->aadhar;
     $password = $request->password;
     $address_1 = $request->address_1;
     $address_2 = $request->address_2;
@@ -25,7 +26,7 @@
         $response['status'] = "error";
         $response['message'] = "Error in Connection";
     }else{
-        $insert_sql = "INSERT INTO users_table(first_name, last_name, username, email_id, address_1, address_2, district, state, pincode, contact_no, password, admin_id) VALUES ('$first_name', '$last_name', '$username', '$email', '$address_1', '$address_2', '$dist', '$state', '$pincode', '$contact_no', '$password', '$admin_id')";
+        $insert_sql = "INSERT INTO users_table(first_name, last_name, username, email_id, aadhar_uid, address_1, address_2, district, state, pincode, contact_no, password, admin_id) VALUES ('$first_name', '$last_name', '$username', '$email', '$aadhar', '$address_1', '$address_2', '$dist', '$state', '$pincode', '$contact_no', '$password', '$admin_id')";
 
         if (mysqli_query($db,$insert_sql)){
             $response['status'] = "success";

@@ -20,6 +20,7 @@
                 $user["email_id"] = $row["email_id"];
                 $user["address"] = $row["address_1"] . " , " . $row["address_2"] . " , " . $row["district"] . " , " . $row["state"] . " - " . $row["pincode"];
                 $user["contact_no"] = $row["contact_no"];
+                $user["blocked"] = $row["blocked"];
                 $result[] = $user;
             }
 

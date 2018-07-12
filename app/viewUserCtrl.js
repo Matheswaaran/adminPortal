@@ -31,7 +31,8 @@ app.controller("viewUserCtrl", function ($scope, $route, $rootScope, toaster, $r
         if ($scope.selected_users.length === 0){
             toaster.pop("warning","","Select users to remove",3000,'trustedHtml');
         } else{
-            $http.post("api/removeUsers.php", $scope.selected_users)
+            $scope.user_data = {users: $scope.selected_users, action: "remove"};
+            $http.post("api/manageUsers.php", $scope.user_data)
                 .then(function(response){
                     toaster.pop(response.data.status,"",response.data.message,3000,'trustedHtml');
                     if (response.data.status == "success"){
@@ -41,8 +42,38 @@ app.controller("viewUserCtrl", function ($scope, $route, $rootScope, toaster, $r
         }
     };
 
-    $scope.blockUsers = function() {
+    $scope.blockUsersClick = function() {
+        $scope.selected_users = $scope.users.filter(user => user.selected == true);
 
+        if ($scope.selected_users.length === 0){
+            toaster.pop("warning","","Select users to Block",3000,'trustedHtml');
+        } else{
+            $scope.user_data = {users: $scope.selected_users, action: "block"};
+            $http.post("api/manageUsers.php", $scope.user_data)
+                .then(function(response){
+                    toaster.pop(response.data.status,"",response.data.message,3000,'trustedHtml');
+                    if (response.data.status == "success"){
+                        $route.reload();
+                    }
+                });
+        }
+    };
+
+    $scope.unBlockUsersClick = function() {
+        $scope.selected_users = $scope.users.filter(user => user.selected == true);
+
+        if ($scope.selected_users.length === 0){
+            toaster.pop("warning","","Select users to Block",3000,'trustedHtml');
+        } else{
+            $scope.user_data = {users: $scope.selected_users, action: "unblock"};
+            $http.post("api/manageUsers.php", $scope.user_data)
+                .then(function(response){
+                    toaster.pop(response.data.status,"",response.data.message,3000,'trustedHtml');
+                    if (response.data.status == "success"){
+                        $route.reload();
+                    }
+                });
+        }
     };
 
 });
