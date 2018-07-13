@@ -1,16 +1,19 @@
 app.controller("viewUserCtrl", function ($scope, $route, $rootScope, toaster, $routeParams, $location, $http) {
 
     $scope.users = {};
+    $scope.allUsers = [];
+    $scope.blockedUsers = [];
+    $scope.activeUsers = [];
 
     $scope.init = function(){
         $http.get("api/checkSession.php")
             .then(function (response) {
-                if (response.data.status == "success"){
+                if (response.data.status === "success"){
                     $rootScope.admin_id = response.data.admin_id;
                     $rootScope.admin_username = response.data.admin_username;
                     localStorage.setItem("admin_id",response.data.admin_id);
                     localStorage.setItem("admin_username",response.data.admin_username);
-                } else if (response.data.status == "error"){
+                } else if (response.data.status === "error"){
                     toaster.pop(response.data.status,"",response.data.message,3000,'trustedHtml');
                     $location.path('/login');
                 }
@@ -23,10 +26,13 @@ app.controller("viewUserCtrl", function ($scope, $route, $rootScope, toaster, $r
                 user.selected = false;
                 return user;
             });
+            $scope.allUsers = $scope.users;
+            $scope.blockedUsers = $scope.users.filter(user => user.blocked === '1');
+            $scope.activeUsers = $scope.users.filter(user => user.blocked === '0');
         });
 
     $scope.removeUserClick = function() {
-        $scope.selected_users = $scope.users.filter(user => user.selected == true);
+        $scope.selected_users = $scope.users.filter(user => user.selected === true);
 
         if ($scope.selected_users.length === 0){
             toaster.pop("warning","","Select users to remove",3000,'trustedHtml');
@@ -35,7 +41,7 @@ app.controller("viewUserCtrl", function ($scope, $route, $rootScope, toaster, $r
             $http.post("api/manageUsers.php", $scope.user_data)
                 .then(function(response){
                     toaster.pop(response.data.status,"",response.data.message,3000,'trustedHtml');
-                    if (response.data.status == "success"){
+                    if (response.data.status === "success"){
                         $route.reload();
                     }
                 });
@@ -43,7 +49,7 @@ app.controller("viewUserCtrl", function ($scope, $route, $rootScope, toaster, $r
     };
 
     $scope.blockUsersClick = function() {
-        $scope.selected_users = $scope.users.filter(user => user.selected == true);
+        $scope.selected_users = $scope.users.filter(user => user.selected === true);
 
         if ($scope.selected_users.length === 0){
             toaster.pop("warning","","Select users to Block",3000,'trustedHtml');
@@ -52,7 +58,7 @@ app.controller("viewUserCtrl", function ($scope, $route, $rootScope, toaster, $r
             $http.post("api/manageUsers.php", $scope.user_data)
                 .then(function(response){
                     toaster.pop(response.data.status,"",response.data.message,3000,'trustedHtml');
-                    if (response.data.status == "success"){
+                    if (response.data.status === "success"){
                         $route.reload();
                     }
                 });
@@ -60,7 +66,7 @@ app.controller("viewUserCtrl", function ($scope, $route, $rootScope, toaster, $r
     };
 
     $scope.unBlockUsersClick = function() {
-        $scope.selected_users = $scope.users.filter(user => user.selected == true);
+        $scope.selected_users = $scope.users.filter(user => user.selected === true);
 
         if ($scope.selected_users.length === 0){
             toaster.pop("warning","","Select users to Block",3000,'trustedHtml');
@@ -69,7 +75,7 @@ app.controller("viewUserCtrl", function ($scope, $route, $rootScope, toaster, $r
             $http.post("api/manageUsers.php", $scope.user_data)
                 .then(function(response){
                     toaster.pop(response.data.status,"",response.data.message,3000,'trustedHtml');
-                    if (response.data.status == "success"){
+                    if (response.data.status === "success"){
                         $route.reload();
                     }
                 });
