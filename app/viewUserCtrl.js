@@ -37,14 +37,16 @@ app.controller("viewUserCtrl", function ($scope, $route, $rootScope, toaster, $r
         if ($scope.selected_users.length === 0){
             toaster.pop("warning","","Select users to remove",3000,'trustedHtml');
         } else{
-            $scope.user_data = {users: $scope.selected_users, action: "remove"};
-            $http.post("api/manageUsers.php", $scope.user_data)
-                .then(function(response){
-                    toaster.pop(response.data.status,"",response.data.message,3000,'trustedHtml');
-                    if (response.data.status === "success"){
-                        $route.reload();
-                    }
-                });
+            if(confirm("Do you want to remove the users?")) {
+                $scope.user_data = {users: $scope.selected_users, action: "remove"};
+                $http.post("api/manageUsers.php", $scope.user_data)
+                    .then(function (response) {
+                        toaster.pop(response.data.status, "", response.data.message, 3000, 'trustedHtml');
+                        if (response.data.status === "success") {
+                            $route.reload();
+                        }
+                    });
+            }
         }
     };
 
@@ -81,5 +83,14 @@ app.controller("viewUserCtrl", function ($scope, $route, $rootScope, toaster, $r
                 });
         }
     };
+
+    $scope.editUserClick = function(index) {
+        $data = $scope.users[index];
+        $http.post('api/getUsers.php', $data)
+            .then(function (response){
+                $rootScope.edit_user = response.data.records;
+                $location.path('/updateUsers');
+            });
+    }
 
 });

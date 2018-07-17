@@ -1,6 +1,6 @@
 <div class="content-box-large" ng-controller="viewUserCtrl" ng-init="init()">
     <div class="panel-heading">
-        <div class="panel-title">Bootstrap dataTables</div>
+        <div class="panel-title"><h1>Users</h1></div>
     </div>
     <div class="panel-body">
         <div class="navbar">
@@ -23,9 +23,11 @@
                                 <th>Select</th>
                                 <th>Name</th>
                                 <th>Username</th>
+                                <th>Aadhar No.</th>
                                 <th>Email-ID</th>
-                                <th>Contact No</th>
+                                <th>Contact No.</th>
                                 <th>Address</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -33,9 +35,13 @@
                             <td><input type="checkbox" ng-model="x.selected" ng-checked="x.selected"/></td>
                             <td>{{ x.name }}</td>
                             <td>{{ x.username }}</td>
+                            <td>{{ x.aadhar_uid }}</td>
                             <td>{{ x.email_id }}</td>
                             <td>{{ x.contact_no }}</td>
                             <td>{{ x.address }}</td>
+                            <td>
+                                <button class="btn btn-block btn-primary" ng-click="editUserClick($index)">Edit</button>
+                            </td>
                         </tr>
                         </tbody>
                     </table>

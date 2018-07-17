@@ -23,11 +23,11 @@ app.controller("addUserCtrl", function ($scope, $route, $rootScope, toaster, $ro
       let chars = "abcdefghijklmnopqrstuvwxyz!@#$%^&*()-+<>ABCDEFGHIJKLMNOP1234567890";
       let pass = "";
       for (let x = 0; x < 10; x++) {
-        var i = Math.floor(Math.random() * chars.length);
+        let i = Math.floor(Math.random() * chars.length);
         pass += chars.charAt(i);
       }
       $scope.user.password = pass;
-    }
+    };
 
     $scope.chkUsername = function (){
       username = $scope.user.username;

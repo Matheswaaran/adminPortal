@@ -1,10 +1,10 @@
-<div class="page-content container col-sm-12" ng-controller="addUserCtrl" ng-init="init()">
+<div class="page-content container col-sm-12" ng-controller="updateUserCtrl" ng-init="init()">
     <div class="content-box-large">
         <div class="panel-heading">
-            <div class="panel-title">Add User Form</div>
+            <div class="panel-title">Update User Form</div>
         </div>
         <div class="panel-body">
-            <form name="addUserForm" role="form">
+            <form name="updateUserForm" role="form">
                 <div class="row">
                     <div class="form-group col-sm-6">
                         <label>First Name *</label>
@@ -29,22 +29,14 @@
                     <label>Aadhar Number *</label>
                     <input class="form-control" placeholder="Enter the Aadhar Card number" type="text" ng-model="user.aadhar" required>
                 </div>
-                <div class="form-group">
-                    <label>Password *</label>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="input-group">
-                                <input class="form-control" placeholder="Password" type="{{showPassword?'text':'password'}}" ng-model="user.password" required>
-                                <span class="input-group-addon">
-                                    <span class="onoffswitch">
-                                        <input type="checkbox" ng-model="showPassword" ng-checked="showPassword" title=""> Show Password
-                                    </span>
-                                </span>
-                                <div class="input-group-btn">
-                                    <button class="btn btn-primary" ng-click="generatePass()">Generate Password</button>
-                                </div>
-                            </div>
-                        </div>
+                <div class="row">
+                    <div class="form-group col-sm-10">
+                        <label>Password *</label>
+                        <input class="form-control" placeholder="Password" type="{{showPassword?'text':'password'}}" ng-model="user.password" required>
+                        <input type="checkbox" ng-model="showPassword" ng-checked="showPassword" title="">Show Password
+                    </div>
+                    <div class="form-group col-sm-1">
+                        <a style="margin-top:20px" href="" class="btn btn-primary" ng-click="generatePass()">Generate</a>
                     </div>
                 </div>
                 <div class="form-group">
@@ -66,7 +58,7 @@
                 <div class="row">
                     <div class="form-group col-sm-6">
                         <label>Pincode *</label>
-                        <input class="form-control" placeholder="Pincode" type="text" ng-model="user.pincode" required>
+                        <input class="form-control" placeholder="State" type="text" ng-model="user.pincode" required>
                     </div>
                     <div class="form-group col-sm-6">
                         <label>Contact Number *</label>

@@ -53,6 +53,16 @@ app.config(['$locationProvider', '$routeProvider', function ($locationProvider, 
         templateUrl: 'partials/viewsites.html',
         controller: 'viewSiteCtrl'
     })
+    .when('/updateUsers', {
+        title: 'Update Users',
+        templateUrl: 'partials/updateuser.html',
+        controller: 'updateUserCtrl'
+    })
+    .when('/updateSites', {
+        title: 'Update Sites',
+        templateUrl: 'partials/updatesites.html',
+        controller: 'updateSiteCtrl'
+    })
 	.when('/', {
     	title: 'Login',
     	templateUrl: 'partials/login.html',
@@ -67,7 +77,7 @@ app.config(['$locationProvider', '$routeProvider', function ($locationProvider, 
 app.run(function ($rootScope, $location, $http, IHRM_adminAppService) {
     $rootScope.$on("$routeChangeStart", function (event, next, current) {
 
-        if ($location.path() == '/' || $location.path() == '/login'){
+        if ($location.path() === '/' || $location.path() === '/login'){
     		$rootScope.navBar = true;
     		$rootScope.sideMenu = true;
             $rootScope.footerDiv = true;
@@ -75,12 +85,13 @@ app.run(function ($rootScope, $location, $http, IHRM_adminAppService) {
 		}else{
             $rootScope.navBar = false;
             $rootScope.sideMenu = false;
-            $rootScope.footerDiv - false;
+            $rootScope.footerDiv = false;
             $rootScope.loginPage = true;
 		}
 
 		$rootScope.admin_id;
         $rootScope.admin_username;
+        $rootScope.edit_user;
     });
 });
 
