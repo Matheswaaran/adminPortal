@@ -63,6 +63,11 @@ app.config(['$locationProvider', '$routeProvider', function ($locationProvider, 
         templateUrl: 'partials/updatesites.html',
         controller: 'updateSiteCtrl'
     })
+    .when('/settings', {
+        title: 'Settings',
+        templateUrl: 'partials/settings.html',
+        controller: 'settingsCtrl'
+    })
 	.when('/', {
     	title: 'Login',
     	templateUrl: 'partials/login.html',

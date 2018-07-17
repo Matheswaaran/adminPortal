@@ -226,6 +226,37 @@ footer .copy{
    border-bottom:2px solid #eee; 
 }
 
+
+.dashboard-box {
+    margin-bottom:30px;
+    background:#fff;
+    border-radius:10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 0px;
+    border-left:1px solid #eee;
+    border-top:1px solid #eee;
+    border-right:2px solid #eee;
+    border-bottom:2px solid #eee;
+    background-color: #5bc0de;
+}
+
+.dashboard-box-all {
+    background-color: orange;
+    color: white;
+    text-align: right
+}
+.dashboard-box-active {
+    background-color: lawngreen;
+    color: white;
+    text-align: right
+}
+.dashboard-box-blocked {
+    background-color: red;
+    color: white;
+    text-align: right
+}
+
 .content-box-large {
   padding: 20px;
 }
@@ -236,7 +267,7 @@ footer .copy{
   border-top-right-radius:0px;
 }
 
-.content-box-header {
+.content-box-header .dashboard-box-header {
   min-height: 40px;
    font-size: 16px;
    background:#f5f5f5;
@@ -246,6 +277,10 @@ footer .copy{
    border-left:1px solid #eee;
    border-top:1px solid #eee;
    border-right:2px solid #eee;
+}
+
+.dashboard-box-header {
+    padding-top: 20px;
 }
 
 .content-box-header:after {
