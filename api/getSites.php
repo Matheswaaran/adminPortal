@@ -13,18 +13,18 @@
         if ($res = mysqli_query($db, $select_qry)){
             $result = array();
             while ($row = mysqli_fetch_array($res)){
+                $site["sid"] = $row["sid"];
                 $site["name"] = $row["name"];
-                $site["address"] = $row["address_1"] . " , " . $row["address_2"] . " , " . $row["district"] . " , " . $row["state"] . " - " . $row["pincode"];
+                $site["address"] = $row["address"] . " , " . $row["district"] . " , " . $row["state"];
                 $site["type"] = $row["type"];
+                $site["gid"] = $row["gid"];
                 $result[] = $site;
             }
-
             $response["records"] = $result;
         }else{
             $response["status"] = "error";
             $response["message"] = "Error in Query Execution";
         }
     }
-
     echo json_encode($response);
 ?>

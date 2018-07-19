@@ -13,21 +13,20 @@
         if ($res = mysqli_query($db, $select_qry)){
             $result = array();
             while ($row = mysqli_fetch_array($res)){
-                $employee["name"] = $row["first_name"] . " ". $row["last_name"];
+                $employee["eid"] = $row["eid"];
+                $employee["name"] = $row["name"];
+                $employee["cid"] = $row["cid"];
                 $employee["aadhar_uid"] = $row["aadhar_uid"];
-                $employee["address"] =  $row["address_1"] . " , " . $row["address_2"] . " , " . $row["district"] . " , " . $row["state"] . " - " . $row["pincode"];
-                $employee["contact_no"] = $row["contact_no"];
+                $employee["aadhar_string"] = $row["aadhar_string"];
                 $employee["skill"] = $row["skill"];
                 $employee["emp_type"] = $row["emp_type"];
                 $result[] = $employee;
             }
-
             $response["records"] = $result;
         }else{
             $response["status"] = "error";
             $response["message"] = "Error in Query Execution";
         }
     }
-
     echo json_encode($response);
 ?>

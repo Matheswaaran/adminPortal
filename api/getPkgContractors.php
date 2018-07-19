@@ -9,16 +9,17 @@ if (!$db){
     $response["status"] = "error";
     $response["message"] = "Error in Connection";
 }else{
-    $select_qry = "SELECT * FROM pkg_contract_users";
+    $select_qry = "SELECT * FROM package_contractors";
     if ($res = mysqli_query($db, $select_qry)){
         $result = array();
         while ($row = mysqli_fetch_array($res)){
-            $contractor["name"] = $row["first_name"] . " ". $row["last_name"];
-            $contractor["username"] = $row["username"];
-            $contractor["email_id"] = $row["email_id"];
+            $contractor["pkg_id"] = $row["pkg_id"];
+            $contractor["name"] = $row["name"];
+            $contractor["sid"] = $row["sid"];
+            $contractor["email"] = $row["email"];
             $contractor["aadhar_uid"] = $row["aadhar_uid"];
-            $contractor["address"] =  $row["address_1"] . " , " . $row["address_2"] . " , " . $row["district"] . " , " . $row["state"] . " - " . $row["pincode"];
-            $contractor["contact_no"] = $row["contact_no"];
+            $contractor["aadhar_string"] = $row["aadhar_string"];
+            $contractor["uid"] = $row["uid"];
             $result[] = $contractor;
         }
 
