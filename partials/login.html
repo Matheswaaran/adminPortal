@@ -1,25 +1,24 @@
-<div class="page-content container" ng-controller="authCtrl" ng-init="init()">
-	<div class="row">
-		<div class="col-md-4 col-md-offset-4">
-			<div class="login-wrapper">
-				<div class="box">
-					<div class="content-wrap">
-						<h6>Administrator Login</h6>
-						<form name="loginForm" role="form">
-							<input class="form-control" name="email" ng-model="login.username" type="text" placeholder="E-mail address" required focus>
-							<input class="form-control" type="password" ng-model="login.password" name="password" placeholder="Password" required>
-							<div class="action">
-								<input type="submit" ng-click="doLogin()" value="Login" class="btn btn-primary signup" data-ng-disabled="loginForm.$invalid"/>
-							</div>
-						</form>
-					</div>
-				</div>
-
-				<div class="already">
-					<p>Can't access the account?</p>
-					<a href="">Forgot Password</a>
-				</div>
-			</div>
-		</div>
-	</div>
+<div class="container" ng-controller="authCtrl" ng-init="init()">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <div class="login-panel panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Administrator Login</h3>
+        </div>
+        <div class="panel-body">
+          <form role="form" name="loginForm">
+            <fieldset>
+            <div class="form-group">
+              <input class="form-control" placeholder="E-mail or Username" ng-model="login.username" name="email" type="text" required autofocus>
+            </div>
+            <div class="form-group">
+              <input class="form-control" placeholder="Password" ng-model="login.password" name="password" type="password" required>
+            </div>
+            <button class="btn btn-lg btn-success btn-block" ng-click="doLogin()" data-ng-disabled="loginForm.$invalid">Login</button>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

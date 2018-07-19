@@ -20,7 +20,7 @@
         $response['status'] = "error";
         $response['message'] = "Error in Connection";
     }else{
-        $insert_sql = "INSERT INTO site_table(name, address_1, address_2, district, state, pincode, type, admin_id) VALUES ('$name','$address_1', '$address_2','$district','$state', '$pincode','$type','$admin_id')";
+        $insert_sql = "INSERT INTO site_table(name, address, district, state, type, admin_id) VALUES ('$name','$address_1','$district','$state','$type','$admin_id')";
 
         if (mysqli_query($db, $insert_sql)){
             $response['status'] = "success";
