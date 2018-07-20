@@ -1,28 +1,18 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: May 25, 2018 at 05:39 PM
--- Server version: 10.1.28-MariaDB
--- PHP Version: 5.6.32
+-- Host: localhost:8889
+-- Generation Time: Jul 20, 2018 at 06:33 AM
+-- Server version: 5.6.38
+-- PHP Version: 7.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `HRM_Database`
 --
-CREATE DATABASE IF NOT EXISTS `HRM_Database` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `HRM_Database`;
 
 -- --------------------------------------------------------
 
@@ -50,9 +40,9 @@ CREATE TABLE `contract_users` (
   `sid` int(11) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(200) NOT NULL,
-  `aadhar_uid` int(20) NOT NULL,
+  `aadhar_uid` bigint(20) NOT NULL,
   `aadhar_string` varchar(1000) NOT NULL,
-  `gid` int(11) NOT NULL,
+  `uid` int(11) NOT NULL,
   `GCMtoken` varchar(250) DEFAULT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -83,7 +73,7 @@ CREATE TABLE `employee_table` (
   `name` varchar(50) NOT NULL,
   `cid` int(11) NOT NULL,
   `auth` int(2) NOT NULL DEFAULT '0',
-  `aadhar_uid` int(20) NOT NULL,
+  `aadhar_uid` bigint(20) NOT NULL,
   `aadhar_string` varchar(1000) NOT NULL,
   `skill` int(3) NOT NULL,
   `emp_type` int(3) NOT NULL,
@@ -101,8 +91,33 @@ CREATE TABLE `goverment_users` (
   `name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(200) NOT NULL,
-  `aadhar_uid` int(20) NOT NULL,
+  `aadhar_uid` bigint(20) NOT NULL,
   `aadhar_string` varchar(1000) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `goverment_users`
+--
+
+INSERT INTO `goverment_users` (`gid`, `name`, `email`, `password`, `aadhar_uid`, `aadhar_string`, `created`) VALUES
+(1, 'Matheswaaran', 'mat@mat.com', '1234', 123, 'laskdjflaksjl', '2018-07-19 18:26:15');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `package_contractors`
+--
+
+CREATE TABLE `package_contractors` (
+  `pkg_id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `sid` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(200) NOT NULL,
+  `aadhar_uid` bigint(20) NOT NULL,
+  `aadhar_string` varchar(1000) NOT NULL,
+  `uid` int(11) NOT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -118,9 +133,19 @@ CREATE TABLE `site_table` (
   `address` varchar(20) NOT NULL,
   `district` varchar(1000) NOT NULL,
   `state` varchar(20) NOT NULL,
-  `type` int(3) NOT NULL,
+  `pincode` varchar(10) NOT NULL,
+  `type` varchar(50) NOT NULL,
+  `gid` int(11) NOT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `site_table`
+--
+
+INSERT INTO `site_table` (`sid`, `name`, `address`, `district`, `state`, `pincode`, `type`, `gid`, `created`) VALUES
+(1, 'LKASJDLA', 'laksjd - lkasjd', 'laskdjf', 'l;askdjf', '1231', '0', 1, '2018-07-19 17:45:11'),
+(1121, 'sakdjal', 'lkasjdl, lkasjd', 'laskdj', 'alsdkf', '1231', '0', 1, '2018-07-19 17:46:04');
 
 -- --------------------------------------------------------
 
@@ -134,7 +159,7 @@ CREATE TABLE `supervisor_users` (
   `name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(200) NOT NULL,
-  `aadhar_uid` int(20) NOT NULL,
+  `aadhar_uid` bigint(20) NOT NULL,
   `aadhar_string` varchar(1000) NOT NULL,
   `gid` int(11) NOT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -167,6 +192,35 @@ CREATE TABLE `super_req_table` (
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users_table`
+--
+
+CREATE TABLE `users_table` (
+  `uid` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `email_id` varchar(100) NOT NULL,
+  `aadhar_uid` int(20) NOT NULL DEFAULT '0',
+  `aadhar_string` varchar(3000) NOT NULL DEFAULT '0',
+  `address_1` varchar(100) NOT NULL,
+  `address_2` varchar(100) NOT NULL,
+  `district` varchar(100) NOT NULL,
+  `state` varchar(100) NOT NULL,
+  `pincode` varchar(10) NOT NULL,
+  `contact_no` varchar(15) NOT NULL,
+  `password` varchar(1000) NOT NULL,
+  `gid` int(11) NOT NULL,
+  `blocked` int(11) NOT NULL DEFAULT '0',
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `users_table`
+--
+
+INSERT INTO `users_table` (`uid`, `first_name`, `last_name`, `username`, `email_id`, `aadhar_uid`, `aadhar_string`, `address_1`, `address_2`, `district`, `state`, `pincode`, `contact_no`, `password`, `gid`, `blocked`, `created`) VALUES
+(1, 'Matheswaaran', 'Srinivasan', 'matheswaaran', 'matheswaarans@gmail.com', 123, '0', 'PSNA College of Engineering and Technology', 'Kothandaraman nagar', 'Dindigul', 'Tamil Nadu', '624622', '9025923103', '123', 1, 0, '2018-07-19 19:09:38');

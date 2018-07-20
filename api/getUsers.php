@@ -15,7 +15,7 @@
             if ($res = mysqli_query($db, $select_qry)) {
                 $result = array();
                 while ($row = mysqli_fetch_array($res)) {
-                    $user["user_id"] = $row["user_id"];
+                    $user["uid"] = $row["uid"];
                     $user["name"] = $row["first_name"] . " " . $row["last_name"];
                     $user["username"] = $row["username"];
                     $user["aadhar_uid"] = $row["aadhar_uid"];
@@ -38,11 +38,11 @@
             $request = json_decode($postdata);
             $id = $request->user_id;
 
-            $select_qry = "SELECT * FROM users_table WHERE user_id = '$id'";
+            $select_qry = "SELECT * FROM users_table WHERE uid = '$id'";
             if ($res = mysqli_query($db, $select_qry)) {
                 $result = array();
                 while ($row = mysqli_fetch_array($res)) {
-                    $user["user_id"] = $row["user_id"];
+                    $user["uid"] = $row["uid"];
                     $user["first_name"] = $row["first_name"];
                     $user["last_name"] = $row["last_name"];
                     $user["username"] = $row["username"];

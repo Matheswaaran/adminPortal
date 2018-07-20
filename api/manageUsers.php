@@ -15,9 +15,9 @@
         $action = $request->action;
 
         switch ($action){
-            case 'remove':
+            case 'REMOVE_USERS':
                 foreach ($users as $user){
-                    $remove_sql = "DELETE FROM users_table WHERE user_id = '$user->user_id'";
+                    $remove_sql = "DELETE FROM users_table WHERE uid = '$user->uid'";
                     if (mysqli_query($db, $remove_sql)){
                         $actionError = false;
                     }else{
@@ -33,9 +33,9 @@
                     $response['message'] = "Error in query execution";
                 }
                 break;
-            case 'block':
+            case 'BLOCK_USERS':
                 foreach ($users as $user){
-                    $remove_sql = "UPDATE users_table SET blocked = 1 WHERE user_id = '$user->user_id'";
+                    $remove_sql = "UPDATE users_table SET blocked = 1 WHERE uid = '$user->uid'";
                     if (mysqli_query($db, $remove_sql)){
                         $actionError = false;
                     }else{
@@ -51,9 +51,9 @@
                     $response['message'] = "Error in query execution";
                 }
                 break;
-            case 'unblock':
+            case 'UNBLOCK_USERS':
                 foreach ($users as $user){
-                    $remove_sql = "UPDATE users_table SET blocked = 0 WHERE user_id = '$user->user_id'";
+                    $remove_sql = "UPDATE users_table SET blocked = 0 WHERE uid = '$user->uid'";
                     if (mysqli_query($db, $remove_sql)){
                         $actionError = false;
                     }else{
