@@ -16,8 +16,8 @@
     $state = $request->state_name;
     $pincode = $request->pincode;
     $contact_no = $request->contact_no;
-    $admin_id = $request->admin_id;
-    $password = $session->encryptIt($password);
+    $gid = $request->gid;
+//    $password = $session->encryptIt($password);
     $response = array();
 
     $db = mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_BASE);
@@ -26,7 +26,7 @@
         $response['status'] = "error";
         $response['message'] = "Error in Connection";
     }else{
-        $insert_sql = "INSERT INTO users_table(first_name, last_name, username, email_id, aadhar_uid, address_1, address_2, district, state, pincode, contact_no, password, admin_id) VALUES ('$first_name', '$last_name', '$username', '$email', '$aadhar', '$address_1', '$address_2', '$dist', '$state', '$pincode', '$contact_no', '$password', '$admin_id')";
+        $insert_sql = "INSERT INTO users_table(first_name, last_name, username, email_id, aadhar_uid, address_1, address_2, district, state, pincode, contact_no, password, gid) VALUES ('$first_name', '$last_name', '$username', '$email', '$aadhar', '$address_1', '$address_2', '$dist', '$state', '$pincode', '$contact_no', '$password', '$gid')";
 
         if (mysqli_query($db,$insert_sql)){
             $response['status'] = "success";

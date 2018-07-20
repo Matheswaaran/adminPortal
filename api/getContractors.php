@@ -19,7 +19,7 @@ if (!$db){
             $contractor["email"] = $row["email"];
             $contractor["aadhar_uid"] = $row["aadhar_uid"];
             $contractor["aadhar_string"] = $row["aadhar_string"];
-            $contractor["gid"] = $row["gid"];
+            $contractor["uid"] = $row["uid"];
             $result[] = $contractor;
         }
 

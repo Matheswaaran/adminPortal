@@ -6,20 +6,20 @@
         <table datatable="ng" dt-options="vm.dtOptions" cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered">
             <thead>
             <tr>
+                <th>ID</th>
                 <th>Name</th>
+                <th>Contractor-ID</th>
                 <th>Aadhar No.</th>
-                <th>Address</th>
-                <th>Contact No.</th>
                 <th>Skills</th>
                 <th>Type</th>
             </tr>
             </thead>
             <tbody>
             <tr class="odd gradeX" ng-repeat="x in employees">
+                <td>{{ x.eid }}</td>
                 <td>{{ x.name }}</td>
+                <td>{{ x.cid }}</td>
                 <td>{{ x.aadhar_uid }}</td>
-                <td>{{ x.address }}</td>
-                <td>{{ x.contact_no }}</td>
                 <td>{{ x.skill }}</td>
                 <td>{{ x.emp_type }}</td>
             </tr>

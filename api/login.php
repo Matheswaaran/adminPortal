@@ -11,7 +11,7 @@
 //    $en_password = $session->encryptIt($password);
     $response = array();
 
-    if (isset($username) && isset($password)){
+    if (isset($email) && isset($password)){
         $db = mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_BASE);
         if (!$db){
             $response['status'] = "error";

@@ -72,7 +72,7 @@ app.controller("addUserCtrl", function ($scope, $route, $rootScope, toaster, $ro
 
     $scope.addUser = function (user) {
 
-        $scope.user.admin_id = localStorage.getItem("admin_id");
+        $scope.user.gid = localStorage.getItem("admin_id");
 
         if ($scope.usernameIsAvailable && $scope.emailIsAvailable ){
             $http.post('api/addUser.php',$scope.user)

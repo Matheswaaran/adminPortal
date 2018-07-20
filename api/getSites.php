@@ -15,7 +15,7 @@
             while ($row = mysqli_fetch_array($res)){
                 $site["sid"] = $row["sid"];
                 $site["name"] = $row["name"];
-                $site["address"] = $row["address"] . " , " . $row["district"] . " , " . $row["state"];
+                $site["address"] = $row["address"] . " , " . $row["district"] . " , " . $row["state"] . " - " . $row["pincode"];
                 $site["type"] = $row["type"];
                 $site["gid"] = $row["gid"];
                 $result[] = $site;

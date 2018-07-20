@@ -17,9 +17,13 @@ app.controller("addSiteCtrl", function ($scope, $route, $rootScope, toaster, $ro
             });
     };
 
-    $scope.addSite = function (site) {
+    $scope.addSite = function () {
 
-        $scope.site.admin_id = localStorage.getItem("admin_id");
+        $scope.site = {
+            ...$scope.site,
+            address: $scope.site.address_1 + ", " + $scope.site.address_2,
+            gid: localStorage.getItem("admin_id")
+        };
 
         $http.post("api/addSite.php", $scope.site)
             .then(function (response) {

@@ -16,6 +16,7 @@
                 $employee["eid"] = $row["eid"];
                 $employee["name"] = $row["name"];
                 $employee["cid"] = $row["cid"];
+                $employee["auth"] = $row["auth"];
                 $employee["aadhar_uid"] = $row["aadhar_uid"];
                 $employee["aadhar_string"] = $row["aadhar_string"];
                 $employee["skill"] = $row["skill"];

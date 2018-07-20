@@ -8,13 +8,13 @@
         <div class="panel-body">
           <form role="form" name="loginForm">
             <fieldset>
-            <div class="form-group">
-              <input class="form-control" placeholder="E-mail or Username" ng-model="login.username" name="email" type="text" required autofocus>
-            </div>
-            <div class="form-group">
-              <input class="form-control" placeholder="Password" ng-model="login.password" name="password" type="password" required>
-            </div>
-            <button class="btn btn-lg btn-success btn-block" ng-click="doLogin()" data-ng-disabled="loginForm.$invalid">Login</button>
+              <div class="form-group">
+                <input class="form-control" placeholder="E-mail Address" ng-model="login.username" name="email" type="email" required autofocus>
+              </div>
+              <div class="form-group">
+                <input class="form-control" placeholder="Password" ng-model="login.password" name="password" type="password" required>
+              </div>
+              <input type="submit" class="btn btn-lg btn-success btn-block" ng-click="doLogin()" data-ng-disabled="loginForm.$invalid" value="Login"/>
             </fieldset>
           </form>
         </div>
@@ -22,3 +22,4 @@
     </div>
   </div>
 </div>
+

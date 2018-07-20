@@ -15,6 +15,7 @@ app.controller( "authCtrl", function ($scope, $rootScope, toaster, $routeParams,
       };
 
       $scope.doLogin = function () {
+          console.log($scope.login);
           $http.post('api/login.php',$scope.login)
               .then(function (response) {
                   toaster.pop(response.data.status,"",response.data.message,3000,'trustedHtml');

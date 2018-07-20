@@ -9,6 +9,10 @@
       <div class="panel-body">
         <form name="addSiteForm" role="form">
             <div class="form-group">
+                <label>Sid ID *</label>
+                <input class="form-control" placeholder="Enter Unique Site ID" type="text" ng-model="site.sid" required>
+            </div>
+            <div class="form-group">
                 <label>Name *</label>
                 <input class="form-control" placeholder="Name of the site" type="text" ng-model="site.name" required>
             </div>
@@ -33,7 +37,6 @@
                     <label>Pincode *</label>
                     <input class="form-control" placeholder="State" type="text" ng-model="site.pincode" required>
                 </div>
-
             </div>
             <div class="form-group">
                 <label>Type *</label>
