@@ -15,8 +15,8 @@ app.controller("viewEmployeeCtrl", function ($scope, $route, $rootScope, toaster
             });
     };
 
-
-    $http.get('api/getEmployees.php')
+    $scope.action = { action: 'GET_EMPLOYEES' };
+    $http.post('api/getData.php', $scope.action)
         .then(function (response) {
             $scope.employees = response.data.records.map(employee => {
                 employee.selected = false;

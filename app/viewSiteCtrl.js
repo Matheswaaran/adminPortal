@@ -15,7 +15,9 @@ app.controller("viewSiteCtrl", function ($scope, $route, $rootScope, toaster, $r
             });
     };
 
-    $http.get('api/getSites.php')
+    $scope.action = { action: 'GET_SITES' };
+
+    $http.post('api/getData.php', $scope.action)
         .then(function (response) {
             $scope.sites = response.data.records;
         });

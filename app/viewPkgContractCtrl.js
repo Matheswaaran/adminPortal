@@ -15,7 +15,8 @@ app.controller("viewPkgContractCtrl", function ($scope, $route, $rootScope, toas
             });
     };
 
-    $http.get('api/getPkgContractors.php')
+    $scope.action = { action: 'GET_PKG_CONTRACTORS' };
+    $http.post('api/getData.php', $scope.action)
         .then(function (response) {
             $scope.sites = response.data.records;
         });

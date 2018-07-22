@@ -20,7 +20,8 @@ app.controller("viewUserCtrl", function ($scope, $route, $rootScope, toaster, $r
             });
     };
 
-    $http.get('api/getUsers.php')
+    $scope.action = { action: 'GET_USERS' };
+    $http.post('api/getData.php', $scope.action)
         .then(function (response) {
             $scope.users = response.data.records.map(user => {
                 user.selected = false;

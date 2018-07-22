@@ -15,7 +15,8 @@ app.controller("viewContractCtrl", function ($scope, $route, $rootScope, toaster
             });
     };
 
-    $http.get('api/getContractors.php')
+    $scope.action = { action: 'GET_CONTRACTORS' };
+    $http.post('api/getData.php', $scope.action)
         .then(function (response) {
             $scope.contractors = response.data.records;
         });
