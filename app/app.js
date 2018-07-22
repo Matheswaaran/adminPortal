@@ -64,6 +64,16 @@ app.config(['$locationProvider', '$routeProvider', function ($locationProvider, 
         templateUrl: 'partials/updatesites.html',
         controller: 'updateSiteCtrl'
       })
+      .when('/employeeAttendance', {
+        title: 'Employees Attendance',
+        templateUrl: 'partials/employeeattendance.html',
+        controller: 'employeeAttendCtrl'
+      })
+      .when('/pkgContractorsReq', {
+        title: 'Package Contractors Requests',
+        templateUrl: 'partials/pkgcontractsreq.html',
+        controller: 'pkgContractReqCtrl'
+      })
       .when('/settings', {
         title: 'Settings',
         templateUrl: 'partials/settings.html',
@@ -84,6 +94,9 @@ app.run(function ($rootScope, $location, $http, IHRM_adminAppService) {
             $rootScope.navBar = false;
             $rootScope.loginPage = true;
 		}
+
+		$rootScope.admin_id = 0;
+        $rootScope.admin_username = null;
 
     });
 });

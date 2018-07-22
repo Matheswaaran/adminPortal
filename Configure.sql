@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jul 20, 2018 at 06:33 AM
+-- Generation Time: Jul 22, 2018 at 12:28 PM
 -- Server version: 5.6.38
 -- PHP Version: 7.1.12
 
@@ -139,14 +139,6 @@ CREATE TABLE `site_table` (
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `site_table`
---
-
-INSERT INTO `site_table` (`sid`, `name`, `address`, `district`, `state`, `pincode`, `type`, `gid`, `created`) VALUES
-(1, 'LKASJDLA', 'laksjd - lkasjd', 'laskdjf', 'l;askdjf', '1231', '0', 1, '2018-07-19 17:45:11'),
-(1121, 'sakdjal', 'lkasjdl, lkasjd', 'laskdj', 'alsdkf', '1231', '0', 1, '2018-07-19 17:46:04');
-
 -- --------------------------------------------------------
 
 --
@@ -217,10 +209,3 @@ CREATE TABLE `users_table` (
   `blocked` int(11) NOT NULL DEFAULT '0',
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `users_table`
---
-
-INSERT INTO `users_table` (`uid`, `first_name`, `last_name`, `username`, `email_id`, `aadhar_uid`, `aadhar_string`, `address_1`, `address_2`, `district`, `state`, `pincode`, `contact_no`, `password`, `gid`, `blocked`, `created`) VALUES
-(1, 'Matheswaaran', 'Srinivasan', 'matheswaaran', 'matheswaarans@gmail.com', 123, '0', 'PSNA College of Engineering and Technology', 'Kothandaraman nagar', 'Dindigul', 'Tamil Nadu', '624622', '9025923103', '123', 1, 0, '2018-07-19 19:09:38');

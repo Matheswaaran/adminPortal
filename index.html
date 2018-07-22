@@ -32,13 +32,12 @@
             <a class="navbar-brand" href="#!/dashboard">Project IHRM</a>
           </div>
           <ul class="nav navbar-top-links navbar-right">
-            <!--<li>Welcome {{ localStorage.getItem("admin_username"); }}</li>-->
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                 <i class="fa fa-user fa-fw"></i> My Account <i class="fa fa-caret-down"></i>
               </a>
               <ul class="dropdown-menu dropdown-user">
-                <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a></li>
+                <li><a href="#!/settings"><i class="fa fa-gear fa-fw"></i> Settings</a></li>
                 <li class="divider"></li>
                 <li ng-controller="authCtrl"><a ng-click="doLogout()"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
               </ul>
@@ -54,6 +53,8 @@
                 <li><a href="#!/viewContractors"><i class="fa fa-th-list fa-fw"></i> View Contractors</a></li>
                 <li><a href="#!/viewPkgContractors"><i class="fa fa-th-list fa-fw"></i> View Package Contractors</a></li>
                 <li><a href="#!/viewEmployees"><i class="fa fa-th-list fa-fw"></i> View Employees</a></li>
+                <li><a href="#!/employeeAttendance"><i class="fa fa-th-list fa-fw"></i> Employee Attendence</a></li>
+                <li><a href="#!/pkgContractorsReq"><i class="fa fa-th-list fa-fw"></i> Package Contractors Requests</a></li>
                 <li><a href="#!/addUser"><i class="fa fa-plus fa-fw"></i> Add User</a></li>
                 <li><a href="#!/addSite"><i class="fa fa-plus fa-fw"></i> Add Site</a></li>
                 <li><a href="#!/settings"><i class="fa fa-cogs fa-fw"></i> Settings</a></li>
@@ -73,7 +74,7 @@
       </div>
     </div>
 
-    <toaster-container toaster-options="{'time-out': 3000,'close-button':true}"></toaster-container>
+    <toaster-container toaster-options="{'time-out': 2000}"></toaster-container>
 
     <script src="./vendor/jquery/jquery.min.js"></script>
     <script src="./vendor/jquery/jquery-ui.js"></script>
@@ -100,6 +101,8 @@
     <script src="app/updateUserCtrl.js"></script>
     <script src="app/updateSiteCtrl.js"></script>
     <script src="app/settingsCtrl.js"></script>
+    <script src="app/employeeAttendCtrl.js"></script>
+    <script src="app/pkgContractReqCtrl.js"></script>
     <script src="./vendor/metisMenu/metisMenu.min.js"></script>
     <script src="./vendor/raphael/raphael.min.js"></script>
     <script src="./vendor/morrisjs/morris.min.js"></script>

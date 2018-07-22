@@ -34,7 +34,7 @@
                 break;
             case 'DIS_APPROVE_EMPLOYEES':
                 foreach ($employees as $employee) {
-                    $disapprove_sql = "UPDATE employee_table SET auth = '1' WHERE eid = '$employee->eid'";
+                    $disapprove_sql = "UPDATE employee_table SET auth = '0' WHERE eid = '$employee->eid'";
                     if (mysqli_query($db, $disapprove_sql)){
                         $actionError = false;
                     }else{

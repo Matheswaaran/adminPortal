@@ -113,6 +113,55 @@
                     $response["message"] = "Error in Query Execution";
                 }
                 break;
+            case 'GET_EMPLOYEE_ATTENDANCE':
+                $select_qry = "SELECT * FROM employee_attendance_table";
+                if ($res = mysqli_query($db, $select_qry)){
+                    $result = array();
+                    while ($row = mysqli_fetch_array($res)){
+                        $attendance["atid"] = $row["atid"];
+                        $attendance["eid"] = $row["eid"];
+                        $attendance["sid"] = $row["sid"];
+                        $attendance["date"] = $row["date"];
+                        $attendance["enter_time"] = $row["enter_time"];
+                        $attendance["exit_time"] = $row["exit_time"];
+                        $result[] = $attendance;
+                    }
+                    $response["records"] = $result;
+                }else{
+                    $response["status"] = "error";
+                    $response["message"] = "Error in Query Execution";
+                }
+                break;
+            case 'GET_PKG_CONTRACTORS_REQUEST':
+                $select_qry = "SELECT * FROM super_req_table";
+                if ($res = mysqli_query($db, $select_qry)){
+                    $result = array();
+                    while ($row = mysqli_fetch_array($res)){
+                        $pkg_request["rid"] = $row["rid"];
+                        $pkg_request["task_name"] = $row["task_name"];
+                        $pkg_request["su_id"] = $row["su_id"];
+                        $pkg_request["sid"] = $row["sid"];
+                        $pkg_request["cid"] = $row["cid"];
+                        $pkg_request["date"] = $row["date"];
+                        $pkg_request["skill_1"] = $row["skill_1"];
+                        $pkg_request["skill_2"] = $row["skill_2"];
+                        $pkg_request["skill_3"] = $row["skill_3"];
+                        $pkg_request["skill_4"] = $row["skill_4"];
+                        $pkg_request["alloc_skill_1"] = $row["alloc_skill_1"];
+                        $pkg_request["alloc_skill_2"] = $row["alloc_skill_2"];
+                        $pkg_request["alloc_skill_3"] = $row["alloc_skill_3"];
+                        $pkg_request["alloc_skill_4"] = $row["alloc_skill_4"];
+                        $pkg_request["alloc_time"] = $row["alloc_time"];
+                        $pkg_request["req_date"] = $row["req_date"];
+                        $pkg_request["c_response"] = $row["c_response"];
+                        $result[] = $pkg_request;
+                    }
+                    $response["records"] = $result;
+                }else{
+                    $response["status"] = "error";
+                    $response["message"] = "Error in Query Execution";
+                }
+                break;
             case 'GET_ALL':
                 $select_contract = "SELECT * FROM contract_users";
                 $select_pkg_contract = "SELECT * FROM package_contractors";
